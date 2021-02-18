@@ -8,15 +8,18 @@
 }
 
 .navContainer img {
-  width: 8%;
+  width: 150px;
 }
 
 h1 {
-  color: rgb(58,188,187)
+  color: rgb(58,188,187);
+  text-align: center;
+	font-size: 34px;
+	margin-bottom: 0;
 }
 
 .logo {
-  margin: 0 0 0 .45em;
+  margin: 5px;
 }
 
 .logo a {
@@ -35,11 +38,13 @@ h1 {
 
 .navigation {
   display: flex;
+  justify-content: space-evenly;
+  margin-right: 20px;
 }
 
 .navigation a {
   display: block;
-  padding: 0.25em;
+  padding: 12px;
   color: rgb(248,72,91)
 }
 
@@ -54,11 +59,10 @@ h1 {
     flex-direction: column;
   }
   .logo {
-    margin: 0;
+    margin: 10px;
   }
   .navigation {
     width: 100%;
-    justify-content: space-around;
   }
 }
 

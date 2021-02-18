@@ -11,7 +11,6 @@ let bakeryCategories = []
 export const ProductList = () => {
   getProducts()
     .then(() => {
-      debugger
       getCategories()
       bakeryProducts = useProducts()
       bakeryCategories = useCategories()

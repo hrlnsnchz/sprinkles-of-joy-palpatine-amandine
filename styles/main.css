@@ -35,3 +35,17 @@ h1,h2,h3,h4,h5,h6 {
 .menuSection {
 	flex-basis: 62%;
 }
+
+.baked_good {
+		padding: 1%;
+		border: wheat solid 3px;
+		text-align: justify;
+		text-justify: distribute-all-lines;
+		text-align: left; 
+		vertical-align: top; 
+		display: inline-block;
+		width: 20em; 
+		height: 20em;
+		margin-bottom: 1em; 
+		margin-right: 3em;
+}

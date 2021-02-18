@@ -10,18 +10,19 @@ let bakeryCategories = []
 
 export const ProductList = () => {
   getProducts()
-    .then(getCategories)
     .then(() => {
+      debugger
+      getCategories()
       bakeryProducts = useProducts()
       bakeryCategories = useCategories()
-      render()
+      render(bakeryProducts, bakeryCategories)
     })
 }
 
-const render = () => {
+const render = (bakeryProducts, bakeryCategories) => {
   contentTarget.innerHTML = bakeryProducts.map(product => {
-    const productCategory = bakeryCategories.find(category => cat.id === product.categoryId)
-
+    const productCategory = bakeryCategories.find(category => category.id === product.categoryId)
+    console.log("Product" + product, "category" + productCategory)
     return Product(product, productCategory)
   }).join("")
 }

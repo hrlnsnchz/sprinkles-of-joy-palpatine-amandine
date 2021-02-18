@@ -3,15 +3,16 @@ import { getCategories, useCategories } from "./CategoryProvider.js"
 const eventHub = document.querySelector("#container")
 const contentTarget = document.querySelector(".filter__category")
 
-let categories = []
-
 export const CategorySelect = () => {
   getCategories()
-  categories = useCategories()
-  render()
+    .then(() => {
+    const categories = useCategories()
+    console.log(categories)
+    render(categories)
+  })
 }
 
-const render = () => {
+const render = (categories) => {
   contentTarget.innerHtml = `
       <select class="dropdown" id="categorySelect">
           <option value="0">All baked goods...</option>

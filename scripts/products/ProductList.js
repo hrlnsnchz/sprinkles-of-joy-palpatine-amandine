@@ -23,4 +23,3 @@ export const ProductList = () => {
         render(bakeryProducts, bakeryCategories)
     })
 }
-

@@ -4,8 +4,6 @@ import { customerLogin } from "./CustomerProvider.js"
 const eventHub = document.querySelector("#container")
 const contentTarget = document.querySelector(".form__login")
 
-let categories = []
-
 export const LoginForm = () => {
   render()
 }

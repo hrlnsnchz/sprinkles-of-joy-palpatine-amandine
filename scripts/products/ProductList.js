@@ -9,7 +9,7 @@ const contentTarget = document.querySelector(".menu__items")
 const render = (productsArray, categoriesArray) => {
   contentTarget.innerHTML = productsArray.map(product => {
     const productCategory = categoriesArray.find(category => category.id === product.categoryId)
-    console.log(product, productCategory)
+    // console.log(product, productCategory)
     return Product(product, productCategory)
   }).join("")
 }

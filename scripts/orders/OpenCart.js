@@ -12,13 +12,14 @@ export const OpenCart = () => {
   render()
 }
 
+
 const render = () => {
   let cartHTML = ""
   let totalCost = 0
 
   for (const product of productsInCart) {
     cartHTML += `
-      <div class="cart">
+      <div class="cart" id="cart">
         <p>${product.name}</p>
         <p>$${product.price.toFixed(2)}</p>
       </div>
@@ -49,6 +50,7 @@ eventHub.addEventListener("addToCart", event => {
       const productToBeAdded = allProducts.find(prod => prod.id === productId)
       productsInCart.push(productToBeAdded)
       OpenCart()
+
     })
 })
 
@@ -65,7 +67,6 @@ eventHub.addEventListener("click", clickEvent => {
           "statusId": initialOrderStatus.id,
           "timestamp": Date.now()
         }
-
         return saveOrder(newOrder, productsInCart)
       })
   }

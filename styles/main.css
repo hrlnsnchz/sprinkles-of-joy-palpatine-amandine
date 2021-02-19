@@ -54,6 +54,5 @@ body {
 		display: inline-block;
 		width: 20em; 
 		height: 20em;
-		margin-bottom: 1em; 
-		margin-right: 3em;
+		margin: 1em;
 }

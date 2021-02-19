@@ -23,3 +23,17 @@ export const ProductList = () => {
         render(bakeryProducts, bakeryCategories)
     })
 }
+
+eventHub.addEventListener("categorySelected", event => {
+  const categoryName = event.detail.selectedCategory
+  categoriesArray = useCategories()
+  const products = useProducts()
+  const filteredProductsArray = products.filter(
+      productObject => {
+          if (productObject.name === categoryName) {
+              return true
+          }
+      }
+  )
+    render(filteredProductsArray, categoriesArray)
+})

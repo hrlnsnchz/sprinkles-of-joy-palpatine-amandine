@@ -16,11 +16,12 @@ export const CustomerNav = () => {
 const render = (customer) => {
   userNav.innerHTML = `
     <h3>Welcome ${customer.name}!</h3>
-    <ul class="userNav__links">
-    <li class="userNav__link" id="userNav--showCart">My Cart</li>
-    <li class="userNav__link" id="userNav--newReview">New Review</li>
-    <li class="userNav__link" id="userNav--pastOrders">Order History</li>
-    </ul>
+    <nav class="userNav__links">
+      <a class="userNav__link" id="userNav--showCart">My Cart</a>
+      <a class="userNav__link" id="userNav--newReview">New Review</a>
+      <a class="userNav__link" id="userNav--pastOrders">Order History</a>
+      <a class="userNav__link" id="userNav--logout">Logout</a>
+    </nav>
   `
 }
 
@@ -41,6 +42,9 @@ eventHub.addEventListener("click", event => {
         break;
       case "pastOrders":
         customEvent = new CustomEvent("showPastOrders")
+        break;
+      case "logout":
+        customEvent = new CustomEvent("logoutUser")
         break;
     }
     eventHub.dispatchEvent(customEvent)

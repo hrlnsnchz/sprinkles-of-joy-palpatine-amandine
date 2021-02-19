@@ -5,22 +5,21 @@ import { Product } from "./Product.js"
 const eventHub = document.querySelector("#container")
 const contentTarget = document.querySelector(".menu__items")
 
-let bakeryProducts = []
-let bakeryCategories = []
+
+const render = (productsArray, categoriesArray) => {
+  contentTarget.innerHTML = productsArray.map(product => {
+    const productCategory = categoriesArray.find(category => category.id === product.categoryId)
+    console.log(product, productCategory)
+    return Product(product, productCategory)
+  }).join("")
+}
 
 export const ProductList = () => {
   getProducts()
+    .then(getCategories)
     .then(() => {
-      getCategories()
-      bakeryProducts = useProducts()
-      bakeryCategories = useCategories()
-      render(bakeryProducts, bakeryCategories)
+        const bakeryProducts = useProducts()
+        const bakeryCategories = useCategories()
+        render(bakeryProducts, bakeryCategories)
     })
-}
-
-const render = (bakeryProducts, bakeryCategories) => {
-  contentTarget.innerHTML = bakeryProducts.map(product => {
-    const productCategory = bakeryCategories.find(category => category.id === product.categoryId)
-    return Product(product, productCategory)
-  }).join("")
 }

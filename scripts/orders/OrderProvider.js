@@ -11,11 +11,11 @@ export const getOrders = () => {
   return fetch(`${bakeryAPI.baseURL}/orders?_expand=status`)
     .then(response => response.json())
     .then(response => {
-      customerOrders = response
+      orders = response
     })
 }
 
-export const saveOrder = (order, productsInOrder) => {
+export const saveOrder = (order, products) => {
   return fetch(`${bakeryAPI.baseURL}/orders`, {
     method: "POST",
     headers: {
@@ -23,19 +23,21 @@ export const saveOrder = (order, productsInOrder) => {
     },
     body: JSON.stringify(order)
   })
-    .then(res => res.json())
-    .then(() => {
-      const orderProducts = productsInOrder.map(product => {
-        return {
-          "orderId": createdOrder.id,
-          "productId": product.id
-        }
-      })
-      return saveOrderProducts(orderProducts)
-    })
-    .then(() => getOrders())
-    .then(dispatchStateChangeEvent)
+  .then(res => res.json())
+  .then((newOrder) => {
+    const orderProducts = products.map(product => {
+    return {
+      "orderId": newOrder.id,
+      "productId": product.id
+    }
+  })
+  return saveOrderProducts(orderProducts)
+  })
+  .then(getOrders)
+  .then(dispatchStateChangeEvent)
 }
+
+  
 
 const dispatchStateChangeEvent = () => {
   const ordersStateChangedEvent = new CustomEvent("ordersStateChanged")

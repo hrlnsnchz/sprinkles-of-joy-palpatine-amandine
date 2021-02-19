@@ -16,11 +16,11 @@ const render = () => {
       <form>
         <fieldset>
           <label for="login-email">Email: </label>
-          <input type="text" id="login-email" name="login-email">
+          <input type="text" id="login-email" name="login-email"></input>
         </fieldset>
         <fieldset>
           <label for="login-password">Password: </label>
-          <input type="password" id="login-password" name="login-password">
+          <input type="password" id="login-password" name="login-password"></input>
         </fieldset>
         <button id="customerLogin">Login</button>
       </form>
@@ -28,17 +28,17 @@ const render = () => {
   }
 }
 
+
 eventHub.addEventListener("click", e => {
   if (e.target.id === "customerLogin") {
+    const loginEmail = document.querySelector("#login-email").value
+    const loginPassword = document.querySelector("#login-password").value
     e.preventDefault()
-    const loginEmail = document.querySelector(".login-email")
-    const loginPassword = document.querySelector(".login-password")
-
     customerLogin(loginEmail, loginPassword)
       .then(user => {
         if (user) {
           contentTarget.innerHTML = ""
-
+  
           authHelper.storeUserInSessionStorage(user.id)
 
           const customEvent = new CustomEvent("userLoggedIn")

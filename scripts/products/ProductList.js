@@ -23,3 +23,29 @@ export const ProductList = () => {
         render(bakeryProducts, bakeryCategories)
     })
 }
+
+eventHub.addEventListener("categorySelected", event => {
+  const categoryId = event.detail.selectedCategory
+  getProducts()
+  .then(getCategories)
+  .then(() => {
+    let categoriesArray = useCategories()
+    const products = useProducts()
+    const filteredProductsArray = products.filter(productObject => {
+      return productObject.categoryId === parseInt(categoryId)}) 
+    render(filteredProductsArray, categoriesArray)
+})})
+    
+
+
+
+// const renderSelection = (productCollection) => {
+//   let productsHTMLRepresentations = ""
+//   const categoriesArray = useCategories()
+
+//   for (const product of productCollection) {
+//     productsHTMLRepresentations += Product(product, categoriesArray)
+//   }
+//   console.log(productsHTMLRepresentations)
+//   contentTarget.innerHTML = productsHTMLRepresentations
+// }

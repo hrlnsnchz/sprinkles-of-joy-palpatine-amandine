@@ -7,7 +7,7 @@ export const CategorySelect = () => {
   getCategories()
     .then(() => {
     const categories = useCategories()
-    console.log(categories)
+    // console.log(categories)
     render(categories)
   })
 }

@@ -9,7 +9,7 @@ const contentTarget = document.querySelector(".menu__items")
 const render = (productsArray, categoriesArray) => {
   contentTarget.innerHTML = productsArray.map(product => {
     const productCategory = categoriesArray.find(category => category.id === product.categoryId)
-    console.log(product, productCategory)
+    // console.log(product, productCategory)
     return Product(product, productCategory)
   }).join("")
 }
@@ -26,26 +26,17 @@ export const ProductList = () => {
 
 eventHub.addEventListener("categorySelected", event => {
   const categoryId = event.detail.selectedCategory
-  getProducts()
-  .then(getCategories)
-  .then(() => {
-    let categoriesArray = useCategories()
-    const products = useProducts()
-    const filteredProductsArray = products.filter(productObject => {
+  const categoriesArray = useCategories()
+  const products = useProducts()
+  if (parseInt(categoryId) !== 0) {
+    getProducts()
+    .then(getCategories)
+    .then(() => {
+      const filteredProductsArray = products.filter(productObject => {
       return productObject.categoryId === parseInt(categoryId)}) 
-    render(filteredProductsArray, categoriesArray)
-})})
-    
-
-
-
-// const renderSelection = (productCollection) => {
-//   let productsHTMLRepresentations = ""
-//   const categoriesArray = useCategories()
-
-//   for (const product of productCollection) {
-//     productsHTMLRepresentations += Product(product, categoriesArray)
-//   }
-//   console.log(productsHTMLRepresentations)
-//   contentTarget.innerHTML = productsHTMLRepresentations
-// }
+      render(filteredProductsArray, categoriesArray)
+  })
+  }else {
+    render(products, categoriesArray)
+  }
+})

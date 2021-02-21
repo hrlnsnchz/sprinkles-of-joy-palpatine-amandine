@@ -5,6 +5,6 @@ const eventHub = document.querySelector("#container")
 
 eventHub.addEventListener("logoutUser", event => {
     sessionStorage.clear()
-    LoginForm()
+    location.reload()
 })
 

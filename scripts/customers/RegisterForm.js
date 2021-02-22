@@ -1,10 +1,8 @@
 import { authHelper } from "../auth/authHelper.js"
-import { customerLogin } from "./CustomerProvider.js"
+import { saveCustomer, customerLogin, getCustomer, getCustomers } from "./CustomerProvider.js"
 
 const eventHub = document.querySelector("#container")
 const contentTarget = document.querySelector(".form__register")
-
-let categories = []
 
 export const RegisterForm = () => {
   render()
@@ -51,4 +49,32 @@ eventHub.addEventListener("click", evt => {
     const customEvent = new CustomEvent("showLoginForm")
     eventHub.dispatchEvent(customEvent)
   }
+})
+
+eventHub.addEventListener("click", clickEvent => {
+  clickEvent.preventDefault()
+  if (clickEvent.target.id === "customerRegister") {
+  const firstName = document.getElementById("register-firstName").value
+  const lastName = document.getElementById("register-lastName").value
+  const email = document.getElementById("register-email").value
+  const password = document.getElementById("register-password").value
+  const rewards = document.getElementById("register-rewards").value
+
+      const newCustomer = {
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          password: password,
+          rewards: rewards
+      }
+      saveCustomer(newCustomer)
+      location.reload()
+      // .then(getCustomers)
+      // .then(newCustomer => {authHelper.storeUserInSessionStorage(newCustomer.id)})
+      // .then (() => {
+      //   const customEvent = new CustomEvent("userLoggedIn")
+      //   eventHub.dispatchEvent(customEvent)
+      //   document.querySelector(".form__register").remove()
+      
+    }   
 })

@@ -21,3 +21,14 @@ export const customerLogin = (email, password) => {
     .then(res => res.json())
     .then(user => (user.length > 0) ? user[0] : false)
 }
+
+export const saveCustomer = customer => {
+  return fetch(`${bakeryAPI.baseURL}/customers`, {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify(customer)
+  })
+  .then(getCustomers)  
+}

@@ -66,6 +66,7 @@ eventHub.addEventListener("click", clickEvent => {
           "timestamp": Date.now()
         }
         return saveOrder(newOrder, productsInCart)
+        // clears cart
         .then(() => {
         document.getElementById("cart").remove()
         userCart.innerHTML = `<h3>Your order has been placed!</h3>`

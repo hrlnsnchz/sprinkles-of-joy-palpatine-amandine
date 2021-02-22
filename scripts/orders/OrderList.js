@@ -32,8 +32,7 @@ const render = () => {
         </div>
         <button id="modal--close">Close</button>
         </div>
-    </div>
-      `
+    </div>`
 }
 
 eventHub.addEventListener("showOrderHistory", () => {

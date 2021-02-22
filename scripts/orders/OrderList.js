@@ -35,7 +35,7 @@ const render = () => {
     </div>`
 }
 
-eventHub.addEventListener("showOrderHistory", () => {
+eventHub.addEventListener("showPastOrders", () => {
   OrderList()
 })
 

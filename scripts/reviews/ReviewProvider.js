@@ -22,3 +22,10 @@ export const saveReview = review => {
     })
     .then(getReviews)  
 }
+
+export const deleteReview = reviewId => {
+    return fetch(`${bakeryAPI.baseURL}/reviews/${reviewId}`, {
+        method: "DELETE"
+    })
+    .then(getReviews)
+}

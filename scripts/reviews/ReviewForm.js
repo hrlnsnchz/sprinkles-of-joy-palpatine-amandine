@@ -66,6 +66,3 @@ eventHub.addEventListener("click", clickEvent => {
     }
 })
 
-
-
-// Once the reviews are saved fetch the data with a separate function and display it with the built i button on each card

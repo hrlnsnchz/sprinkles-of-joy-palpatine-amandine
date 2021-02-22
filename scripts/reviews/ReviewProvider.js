@@ -2,7 +2,7 @@ import { bakeryAPI } from "../Settings.js"
 
 let reviews = []
 
-export const useReviews = () => reviews.slice
+export const useReviews = () => reviews.slice()
 
 export const getReviews = () => {
     return fetch(`${bakeryAPI.baseURL}/reviews`)

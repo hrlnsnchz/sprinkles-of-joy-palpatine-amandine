@@ -1,6 +1,7 @@
 import { getProducts, useProducts } from "../products/ProductProvider.js"
 import { saveReview } from "./ReviewProvider.js"
 import { authHelper } from "../auth/authHelper.js"
+import { ProductList } from "../products/ProductList.js"
 
 const eventHub = document.querySelector("#container")
 let contentTarget = document.querySelector(".form__review")
@@ -65,7 +66,7 @@ eventHub.addEventListener("click", clickEvent => {
             comment: comment
         }
         saveReview(newReview)
-        return newReview
+        .then(ProductList)
     }
 })
 

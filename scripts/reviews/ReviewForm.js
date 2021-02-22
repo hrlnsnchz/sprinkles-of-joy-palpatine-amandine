@@ -1,5 +1,6 @@
 import { getProducts, useProducts } from "../products/ProductProvider.js"
 import { saveReview } from "./ReviewProvider.js"
+import { authHelper } from "../auth/authHelper.js"
 
 const eventHub = document.querySelector("#container")
 let contentTarget = document.querySelector(".form__review")
@@ -55,8 +56,10 @@ eventHub.addEventListener("click", clickEvent => {
     const product = document.getElementById("productSelect").value
     const rating = document.getElementById("ratingSelect").value
     const comment = document.getElementById("reviewComment").value
+    const currentCustomerId = parseInt(authHelper.getCurrentUserId())
 
         const newReview = {
+            customerId: currentCustomerId,
             productId: parseInt(product),
             rating: parseInt(rating),
             comment: comment

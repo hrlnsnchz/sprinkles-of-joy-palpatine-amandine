@@ -15,7 +15,7 @@ export const CustomerNav = () => {
 
 const render = (customer) => {
   userNav.innerHTML = `
-    <h3>Welcome ${customer.name}!</h3>
+    <h3>Welcome ${customer.firstName}!</h3>
     <nav class="userNav__links">
       <a class="userNav__link" id="userNav--showCart">My Cart</a>
       <a class="userNav__link" id="userNav--newReview">New Review</a>

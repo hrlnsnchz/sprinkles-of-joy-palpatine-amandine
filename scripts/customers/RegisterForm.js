@@ -4,8 +4,6 @@ import { customerLogin } from "./CustomerProvider.js"
 const eventHub = document.querySelector("#container")
 const contentTarget = document.querySelector(".form__register")
 
-let categories = []
-
 export const RegisterForm = () => {
   render()
 }

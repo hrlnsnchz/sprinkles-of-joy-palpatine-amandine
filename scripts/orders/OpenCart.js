@@ -12,29 +12,28 @@ export const OpenCart = () => {
   render()
 }
 
-
 const render = () => {
   let cartHTML = ""
   let totalCost = 0
 
   for (const product of productsInCart) {
     cartHTML += `
-      <div class="cart" id="cart">
+    <div class="cart__product">
         <p>${product.name}</p>
         <p>$${product.price.toFixed(2)}</p>
-      </div>
+    </div>
     `
     totalCost += product.price
   }
 
   userCart.innerHTML = `
     <div>
+    <div class="cart" id="cart">
     <h4>Cart</h4>
     ${cartHTML}
     <hr/>
-    <div class="cart">
+    <p>${totalCost.toFixed(2)}</p>
     <button id="placeOrder">Place Order</button>
-    <p>$${totalCost.toFixed(2)}</p>
     </div>
     </div>
   `
@@ -50,7 +49,6 @@ eventHub.addEventListener("addToCart", event => {
       const productToBeAdded = allProducts.find(prod => prod.id === productId)
       productsInCart.push(productToBeAdded)
       OpenCart()
-
     })
 })
 
@@ -68,6 +66,11 @@ eventHub.addEventListener("click", clickEvent => {
           "timestamp": Date.now()
         }
         return saveOrder(newOrder, productsInCart)
+        .then(() => {
+        document.getElementById("cart").remove()
+        userCart.innerHTML = `<h3>Your order has been placed!</h3>`
+        productsInCart = []
+        })
       })
-  }
-})
+    }
+  })

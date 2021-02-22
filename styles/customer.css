@@ -13,7 +13,7 @@ fieldset {
   border: 0;
 }
 
-.cart {
+.cart__product {
   display: flex;
   justify-content: space-between;
 }

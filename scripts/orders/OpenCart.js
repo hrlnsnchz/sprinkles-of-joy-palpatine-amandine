@@ -12,7 +12,6 @@ export const OpenCart = () => {
   render()
 }
 
-
 const render = () => {
   let cartHTML = ""
   let totalCost = 0
@@ -69,5 +68,6 @@ eventHub.addEventListener("click", clickEvent => {
         }
         return saveOrder(newOrder, productsInCart)
       })
+      document.querySelector(".cart").remove()
   }
 })

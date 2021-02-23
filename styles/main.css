@@ -56,3 +56,13 @@ body {
 		height: 30em;
 		margin: 1em;
 }
+
+.contactForm {
+	display: flex;
+	flex-direction: column;
+}
+
+.contactForm button {
+	width: 100px;
+	margin: 10px;
+}

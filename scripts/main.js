@@ -10,6 +10,10 @@ import { ProductList } from "./products/ProductList.js"
 import "./reviews/ReviewForm.js"
 
 import "./customers/CustomerLogout.js"
+import "./about/AboutProvider.js"
+import "./about/ContactForm.js"
+
+
 
 LoginForm()
 CustomerNav()

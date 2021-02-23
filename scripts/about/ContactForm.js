@@ -15,6 +15,7 @@ export const renderContact = () => {
 
             <label class="message" for="message">Message:</label>
             <input type="text" id="message" name="message">
+            <button>Submit</button>
         <button id="modal--close">Close</button>
         </form>
         </div>
